@@ -850,10 +850,13 @@
     border-color: var(--m3themer-primary);
   }
   
-  .a-q-Xc-Ab-c-wDYxhc /* Details sidebar empty state (in pages besides My Drive) */ {
+  .a-q-Xc-Ab-c-wDYxhc /* Details sidebar empty state with sphere image (in pages besides My Drive) */ {
     &>img[src="https://ssl.gstatic.com/docs/doclist/images/empty_state_details.png"] {
       visibility: hidden;
     }
+  }
+  .a-q-Xc-Ab-c>svg>.a-s-fa-Ha-pa /* Details sidebar empty state with comment sihlouette */ {
+    fill: var(--m3themer-outline);
   }
   
   .gb_Mc /* Settings back button */ {
