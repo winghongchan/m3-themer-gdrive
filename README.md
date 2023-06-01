@@ -1,4 +1,4 @@
-# m3-themer-gdrive
+# M3 Themes for Google Drive
 Colour themes for the new Material You–styled Google Drive. 
 
 If [Stylus](https://add0n.com/stylus.html) is installed on your browser,\
@@ -11,3 +11,5 @@ This userstyle lets you change the colours in Google Drive similar to how you ca
 Included colour themes: red, yellow, green, blue, violet, _nord_
 
 Each theme supports light and dark modes.
+
+You may choose to give M3 Themes for Google Drive a rating at [userstyles.world](https://userstyles.world/style/10111/m3-themes-for-google-drive). 
