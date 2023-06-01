@@ -1,0 +1,936 @@
+/* ==UserStyle==
+@name           M3 Themer for Google Drive
+@namespace      userstyles.world/user/winghongchan
+@version        2023.06.01
+@description    Colour themes for the new Material You–styled Google Drive. 
+@author         Walter winghongchan
+@supportURL     https://github.com/winghongchan/m3-themer-gdrive/issues
+@license        GPL-3.0-or-later
+@preprocessor   less
+@var            select dynamic-colour-theme "Colour theme" ["Red", "Yellow", "Green", "Blue", "Violet", "Nord*"]
+@var            select light-dark-auto "Light/Dark Mode" ["Light", "Dark", "Auto:Use device theme*"]
+==/UserStyle== */
+
+// Please note
+// If you change things in the configuration dialog, you may have to turn M3 Themable Google Drive off and on again to apply changes.
+// To users of Firefox: the has() selector, which M3 Themable Google Drive uses, is currently in development. You can enable it by going to about:config and setting layout.css.has-selector.enabled to true. 
+// To users of Firefox versions before 113: color-mix() was in development during these older versions and needs to be enabled manually by going to about:config and setting layout.css.color-mix.enabled to true. 
+
+@-moz-document url-prefix("https://drive.google.com/drive/"), regexp("https:\\/\\/drive\\.google\\.com.*\\/odp\\/embed\\?host_context=CAgSGCICIAEqAggBMgoIARABGAEgASgBOAFIARohZHJpdmUud2ViLWZyb250ZW5kXzIwMjMwNTIxLjE5X3AwIgE.*&origin=https%3A%2F%2Fdrive.google.com&odbc=1&online=1") {  
+  // Recolouring
+  
+  .light-theme() when (@dynamic-colour-theme = Red) {
+    --m3themer-primary: #a03f28;
+    --m3themer-on-primary: #ffffff;
+    --m3themer-primary-container: #ffdad2;
+    --m3themer-on-primary-container: #3d0700;
+    --m3themer-secondary: #7a564d;
+    --m3themer-on-secondary: #ffffff;
+    --m3themer-secondary-container: #ffdad2;
+    --m3themer-on-secondary-container: #2e150e;
+    --m3themer-tertiary: #6e5d28;
+    --m3themer-on-tertiary: #ffffff;
+    --m3themer-tertiary-container: #f9e09f;
+    --m3themer-on-tertiary-container: #241a00;
+    --m3themer-error: #ba1a1a;
+    --m3themer-on-error: #ffffff;
+    --m3themer-error-container: #ffdad6;
+    --m3themer-on-error-container: #410002;
+    --m3themer-background: #fffbff;
+    --m3themer-on-background: #201a19;
+    --m3themer-surface-dim: #E8D6D2;
+    --m3themer-surface: #FFF8F6;
+    --m3themer-surface-bright: #FFF8F6;
+    // The HCT color picker at https://www.figma.com/community/plugin/1227923985322908257/HCT-color-picker was very useful in this. Turns out, HCT stands for hue, chroma, tone and is what the Material Design website means when they refer to different tones. HCT is a new colour system Google invented. I’m adopting it mostly so the dark theme looks better with the surface bright role.
+    --m3themer-surface-container-lowest: #FFFFFF;
+    --m3themer-surface-container-low: #FFF0ED;
+    --m3themer-surface-container: #FCEAE6;
+    --m3themer-surface-container-high: #F7E4E0;
+    --m3themer-surface-container-highest: #F1DFDB;
+    --m3themer-on-surface: #201a19;
+    --m3themer-on-surface-variant: #534340;
+    --m3themer-inverse-surface: #362f2d;
+    --m3themer-inverse-on-surface: #fbeeeb;
+    --m3themer-outline: #85736f;
+    --m3themer-outline-variant: #d8c2bd;
+  }
+  
+  .light-theme() when (@dynamic-colour-theme = Yellow) {
+    --m3themer-primary: #626033;
+    --m3themer-on-primary: #ffffff;
+    --m3themer-primary-container: #e9e5ac;
+    --m3themer-on-primary-container: #1e1d00;
+    --m3themer-secondary: #605f51;
+    --m3themer-on-secondary: #ffffff;
+    --m3themer-secondary-container: #e6e3d1;
+    --m3themer-on-secondary-container: #1d1c11;
+    --m3themer-tertiary: #52625a;
+    --m3themer-on-tertiary: #ffffff;
+    --m3themer-tertiary-container: #d5e7dc;
+    --m3themer-on-tertiary-container: #101e18;
+    --m3themer-error: #ba1a1a;
+    --m3themer-on-error: #ffffff;
+    --m3themer-error-container: #ffdad6;
+    --m3themer-on-error-container: #410002;
+    --m3themer-background: #FDF9EC;
+    --m3themer-on-background: #1c1c19;
+    --m3themer-surface-dim: #DEDACD;
+    --m3themer-surface: #FDF9EC;
+    --m3themer-surface-bright: #FDF9EC;
+    --m3themer-surface-container-lowest: #FFFFFF;
+    --m3themer-surface-container-low: #F8F4E6;
+    --m3themer-surface-container: #F2EEE0;
+    --m3themer-surface-container-high: #ECE8DB;
+    --m3themer-surface-container-highest: #E6E2D5;
+    --m3themer-on-surface: #1c1c19;
+    --m3themer-on-surface-variant: #484741;
+    --m3themer-inverse-surface: #31302e;
+    --m3themer-inverse-on-surface: #f4f0ec;
+    --m3themer-outline: #797770;
+    --m3themer-outline-variant: #c9c6be;
+  }
+  
+  .light-theme() when (@dynamic-colour-theme = Green) {
+    --m3themer-primary: #496727;
+    --m3themer-on-primary: #ffffff;
+    --m3themer-primary-container: #c9ee9e;
+    --m3themer-on-primary-container: #0f2000;
+    --m3themer-secondary: #59614e;
+    --m3themer-on-secondary: #ffffff;
+    --m3themer-secondary-container: #dde6cd;
+    --m3themer-on-secondary-container: #171e0e;
+    --m3themer-tertiary: #426462;
+    --m3themer-on-tertiary: #ffffff;
+    --m3themer-tertiary-container: #c5eae7;
+    --m3themer-on-tertiary-container: #00201f;
+    --m3themer-error: #ba1a1a;
+    --m3themer-on-error: #ffffff;
+    --m3themer-error-container: #ffdad6;
+    --m3themer-on-error-container: #410002;
+    --m3themer-background: #F9FAEF;
+    --m3themer-on-background: #1b1c18;
+    --m3themer-surface-dim: #D9DBD0;
+    --m3themer-surface: #F9FAEF;
+    --m3themer-surface-bright: #F9FAEF;
+    --m3themer-surface-container-lowest: #FFFFFF;
+    --m3themer-surface-container-low: #F3F5E9;
+    --m3themer-surface-container: #EEEFE4;
+    --m3themer-surface-container-high: #E8E9DE;
+    --m3themer-surface-container-highest: #E2E3D8;
+    --m3themer-on-surface: #1A1C16;
+    --m3themer-on-surface-variant: #45483f;
+    --m3themer-inverse-surface: #30312d;
+    --m3themer-inverse-on-surface: #f2f1eb;
+    --m3themer-outline: #75786e;
+    --m3themer-outline-variant: #c5c8bc;
+  }
+  
+  .light-theme() when (@dynamic-colour-theme = Blue) {
+    --m3themer-primary: #255fa4;
+    --m3themer-on-primary: #ffffff;
+    --m3themer-primary-container: #d5e3ff;
+    --m3themer-on-primary-container: #001c3b;
+    --m3themer-secondary: #555f70;
+    --m3themer-on-secondary: #ffffff;
+    --m3themer-secondary-container: #d9e3f8;
+    --m3themer-on-secondary-container: #121c2b;
+    --m3themer-tertiary: #6e5675;
+    --m3themer-on-tertiary: #ffffff;
+    --m3themer-tertiary-container: #f7d8fe;
+    --m3themer-on-tertiary-container: #27142f;
+    --m3themer-error: #ba1a1a;
+    --m3themer-on-error: #ffffff;
+    --m3themer-error-container: #ffdad6;
+    --m3themer-on-error-container: #410002;
+    --m3themer-background: #F9F9FF;
+    --m3themer-on-background: #191C20;
+    --m3themer-surface-dim: #D9DAE0;
+    --m3themer-surface: #F9F9FF;
+    --m3themer-surface-bright: #F9F9FF;
+    --m3themer-surface-container-lowest: #FFFFFF;
+    --m3themer-surface-container-low: #F3F3FA;
+    --m3themer-surface-container: #EDEDF4;
+    --m3themer-surface-container-high: #E7E8EE;
+    --m3themer-surface-container-highest: #E1E2E9;
+    --m3themer-on-surface: #191C20;
+    --m3themer-on-surface-variant: #43474e;
+    --m3themer-inverse-surface: #2f3033;
+    --m3themer-inverse-on-surface: #f1f0f4;
+    --m3themer-outline: #74777f;
+    --m3themer-outline-variant: #c4c6cf;
+  }
+  
+  .light-theme() when (@dynamic-colour-theme = Violet) {
+    --m3themer-primary: #6750A4;
+    --m3themer-on-primary: #ffffff;
+    --m3themer-primary-container: #EADDFF;
+    --m3themer-on-primary-container: #21005D;
+    --m3themer-secondary: #625B71;
+    --m3themer-on-secondary: #ffffff;
+    --m3themer-secondary-container: #E8DEF8;
+    --m3themer-on-secondary-container: #1D192B;
+    --m3themer-tertiary: #7D5260;
+    --m3themer-on-tertiary: #ffffff;
+    --m3themer-tertiary-container: #FFD8E4;
+    --m3themer-on-tertiary-container: #31111D;
+    --m3themer-error: #B3261E;
+    --m3themer-on-error: #ffffff;
+    --m3themer-error-container: #F9DEDC;
+    --m3themer-on-error-container: #410E0B;
+    --m3themer-background: #FDF7FF;
+    --m3themer-on-background: #1D1B20;
+    --m3themer-surface-dim: #DED8E0;
+    --m3themer-surface: #FDF7FF;
+    --m3themer-surface-bright: #FDF7FF;
+    --m3themer-surface-container-lowest: #FFFFFF;
+    --m3themer-surface-container-low: #F8F2FA;
+    --m3themer-surface-container: #F2ECF4;
+    --m3themer-surface-container-high: #ECE6EE;
+    --m3themer-surface-container-highest: #E6E0E9;
+    --m3themer-on-surface: #1D1B20;
+    --m3themer-on-surface-variant: #49454F;
+    --m3themer-inverse-surface: #2f3033;
+    --m3themer-inverse-on-surface: #f1f0f4;
+    --m3themer-outline: #79747E;
+    --m3themer-outline-variant: #CAC4D0;
+  }
+  
+  .light-theme() when (@dynamic-colour-theme = Nord) {
+    --m3themer-primary: #00687a;
+    --m3themer-on-primary: #ffffff;
+    --m3themer-primary-container: #b5e5f2;
+    --m3themer-on-primary-container: #2e3440;
+    --m3themer-secondary: #81a1c1;
+    --m3themer-on-secondary: #2e3440;
+    --m3themer-secondary-container: #cee7ef;
+    --m3themer-on-secondary-container: #2e3440;
+    --m3themer-tertiary: #5e81ac;
+    --m3themer-on-tertiary: #2e3440;
+    --m3themer-tertiary-container: #4c566a;
+    --m3themer-on-tertiary-container: #d8dee9;
+    --m3themer-error: #9c404b;
+    --m3themer-on-error: #2e3440;
+    --m3themer-error-container: #eceff4;
+    --m3themer-on-error-container: #9c404b;
+    --m3themer-background: #ffffff;
+    --m3themer-on-background: #2e3440;
+    --m3themer-surface-dim: #d8dee9;
+    --m3themer-surface: #ffffff;
+    --m3themer-surface-bright: #ffffff;
+    --m3themer-surface-container-lowest: #f2f4f8;
+    --m3themer-surface-container-low: #f2f4f8;
+    --m3themer-surface-container: #eceff4;
+    --m3themer-surface-container-high: #e5e9f0;
+    --m3themer-surface-container-highest: #d8dee9;
+    --m3themer-on-surface: #2e3440;
+    --m3themer-on-surface-variant: #4c566a;
+    --m3themer-inverse-surface: #4c566a;
+    --m3themer-inverse-on-surface: #eceff4;
+    --m3themer-outline: #70797c;
+    --m3themer-outline-variant: #d8dee9;
+  }
+  
+  .light-theme() {
+    --m3themer-warning: #F09D00;
+    --m3themer-on-warning: #1F1F1F;
+    --m3themer-warning-container: #FFDF99;
+    --m3themer-on-warning-container: #421F00;
+  }
+  
+  @media (prefers-color-scheme: light) {
+    :root when (@light-dark-auto = Auto) {
+      .light-theme();
+    }
+  }
+  :root when (@light-dark-auto = Light) {
+    .light-theme();
+  }
+  
+  .dark-theme() when (@dynamic-colour-theme = Red) {
+    --m3themer-primary: #ffb4a3;
+    --m3themer-on-primary: #611201;
+    --m3themer-primary-container: #812813;
+    --m3themer-on-primary-container: #ffdad2;
+    --m3themer-secondary: #eabcb1;
+    --m3themer-on-secondary: #462922;
+    --m3themer-secondary-container: #5f3f37;
+    --m3themer-on-secondary-container: #ffdad2;
+    --m3themer-tertiary: #dcc586;
+    --m3themer-on-tertiary: #3d2f00;
+    --m3themer-tertiary-container: #554512;
+    --m3themer-on-tertiary-container: #f9e09f;
+    --m3themer-error: #ffb4ab;
+    --m3themer-on-error: #690005;
+    --m3themer-error-container: #93000a;
+    --m3themer-on-error-container: #ffb4ab;
+    --m3themer-background: #1A110F;
+    --m3themer-on-background: #ede0dd;
+    --m3themer-surface-dim: #1A110F;
+    --m3themer-surface: #1A110F;
+    --m3themer-surface-bright: #423734;
+    --m3themer-surface-container-lowest: #140C0A;
+    --m3themer-surface-container-low: #231917;
+    --m3themer-surface-container: #271D1B;
+    --m3themer-surface-container-high: #322825;
+    --m3themer-surface-container-highest: #3D3230;
+    --m3themer-on-surface: #ede0dd;
+    --m3themer-on-surface-variant: #c5c8bc;
+    --m3themer-inverse-surface: #ede0dd;
+    --m3themer-inverse-on-surface: #362f2d;
+    --m3themer-outline: #a08c88;
+    --m3themer-outline-variant: #534340;
+  }
+  
+  .dark-theme() when (@dynamic-colour-theme = Yellow) {
+    --m3themer-primary: #cac996;
+    --m3themer-on-primary: #32320d;
+    --m3themer-primary-container: #484921;
+    --m3themer-on-primary-container: #e6e5b0;
+    --m3themer-secondary: #c9c7b7;
+    --m3themer-on-secondary: #313126;
+    --m3themer-secondary-container: #48473b;
+    --m3themer-on-secondary-container: #e6e3d2;
+    --m3themer-tertiary: #bacac2;
+    --m3themer-on-tertiary: #25332d;
+    --m3themer-tertiary-container: #3b4a44;
+    --m3themer-on-tertiary-container: #d6e6dd;
+    --m3themer-error: #F2B8B5;
+    --m3themer-on-error: #601410;
+    --m3themer-error-container: #8C1D18;
+    --m3themer-on-error-container: #F9DEDC;
+    --m3themer-background: #141311;
+    --m3themer-on-background: #e6e2de;
+    --m3themer-surface-dim: #141311;
+    --m3themer-surface: #141311;
+    --m3themer-surface-bright: #3A3936;
+    --m3themer-surface-container-lowest: #0F0E0C;
+    --m3themer-surface-container-low: #1C1C19;
+    --m3themer-surface-container: #20201D;
+    --m3themer-surface-container-high: #2B2A27;
+    --m3themer-surface-container-highest: #363532;
+    --m3themer-on-surface: #e3e2e6;
+    --m3themer-on-surface-variant: #c9c6be;
+    --m3themer-inverse-surface: #e6e2de;
+    --m3themer-inverse-on-surface: #31302e;
+    --m3themer-outline: #939189;
+    --m3themer-outline-variant: #484741;
+  }
+  
+  .dark-theme() when (@dynamic-colour-theme = Green) {
+    --m3themer-primary: #aed285;
+    --m3themer-on-primary: #1d3700;
+    --m3themer-primary-container: #324f10;
+    --m3themer-on-primary-container: #c9ee9e;
+    --m3themer-secondary: #c1cab2;
+    --m3themer-on-secondary: #2b3322;
+    --m3themer-secondary-container: #414937;
+    --m3themer-on-secondary-container: #dde6cd;
+    --m3themer-tertiary: #a9ceca;
+    --m3themer-on-tertiary: #123634;
+    --m3themer-tertiary-container: #2b4c4a;
+    --m3themer-on-tertiary-container: #c5eae7;
+    --m3themer-error: #F2B8B5;
+    --m3themer-on-error: #601410;
+    --m3themer-error-container: #8C1D18;
+    --m3themer-on-error-container: #F9DEDC;
+    --m3themer-background: #12140E;
+    --m3themer-on-background: #e4e3dd;
+    --m3themer-surface-dim: #12140E;
+    --m3themer-surface: #12140E;
+    --m3themer-surface-bright: #373A33;
+    --m3themer-surface-container-lowest: #0C0F09;
+    --m3themer-surface-container-low: #1A1C16;
+    --m3themer-surface-container: #1E201A;
+    --m3themer-surface-container-high: #282B24;
+    --m3themer-surface-container-highest: #33362E;
+    --m3themer-on-surface: #e4e3dd;
+    --m3themer-on-surface-variant: #c5c8bc;
+    --m3themer-inverse-surface: #e4e3dd;
+    --m3themer-inverse-on-surface: #30312d;
+    --m3themer-outline: #8f9287;
+    --m3themer-outline-variant: #45483f;
+  }
+  
+  .dark-theme() when (@dynamic-colour-theme = Blue) {
+    --m3themer-primary: #a6c8ff;
+    --m3themer-on-primary: #003060;
+    --m3themer-primary-container: #004787;
+    --m3themer-on-primary-container: #d5e3ff;
+    --m3themer-secondary: #bdc7db;
+    --m3themer-on-secondary: #273141;
+    --m3themer-secondary-container: #3d4758;
+    --m3themer-on-secondary-container: #d9e3f8;
+    --m3themer-tertiary: #dabde1;
+    --m3themer-on-tertiary: #3d2945;
+    --m3themer-tertiary-container: #553f5d;
+    --m3themer-on-tertiary-container: #f7d8fe;
+    --m3themer-error: #F2B8B5;
+    --m3themer-on-error: #601410;
+    --m3themer-error-container: #8C1D18;
+    --m3themer-on-error-container: #F9DEDC;
+    --m3themer-background: #111318;
+    --m3themer-on-background: #E1E2E9;
+    --m3themer-surface-dim: #111318;
+    --m3themer-surface: #111318;
+    --m3themer-surface-bright: #37393E;
+    --m3themer-surface-container-lowest: #0C0E13;
+    --m3themer-surface-container-low: #191C20;
+    --m3themer-surface-container: #1D2024;
+    --m3themer-surface-container-high: #282A2F;
+    --m3themer-surface-container-highest: #32353A;
+    --m3themer-on-surface: #E1E2E9;
+    --m3themer-on-surface-variant: #c4c6cf;
+    --m3themer-inverse-surface: #e3e2e6;
+    --m3themer-inverse-on-surface: #2f3033;
+    --m3themer-outline: #8e9199;
+    --m3themer-outline-variant: #43474e;
+  }
+  
+  .dark-theme() when (@dynamic-colour-theme = Violet) {
+    --m3themer-primary: #D0BCFF;
+    --m3themer-on-primary: #381E72;
+    --m3themer-primary-container: #4F378B;
+    --m3themer-on-primary-container: #EADDFF;
+    --m3themer-secondary: #CCC2DC;
+    --m3themer-on-secondary: #332D41;
+    --m3themer-secondary-container: #4A4458;
+    --m3themer-on-secondary-container: #E8DEF8;
+    --m3themer-tertiary: #EFB8C8;
+    --m3themer-on-tertiary: #492532;
+    --m3themer-tertiary-container: #633B48;
+    --m3themer-on-tertiary-container: #FFD8E4;
+    --m3themer-error: #F2B8B5;
+    --m3themer-on-error: #601410;
+    --m3themer-error-container: #8C1D18;
+    --m3themer-on-error-container: #F9DEDC;
+    --m3themer-background: #141218;
+    --m3themer-on-background: #E6E1E5;
+    --m3themer-surface-dim: #141218;
+    --m3themer-surface: #141218;
+    --m3themer-surface-bright: #3B383E;
+    --m3themer-surface-container-lowest: #0F0D13;
+    --m3themer-surface-container-low: #1D1B20;
+    --m3themer-surface-container: #211F24;
+    --m3themer-surface-container-high: #2B292F;
+    --m3themer-surface-container-highest: #3B383E;
+    --m3themer-on-surface: #E6E1E5;
+    --m3themer-on-surface-variant: #CAC4D0;
+    --m3themer-inverse-surface: #E6E1E5;
+    --m3themer-inverse-on-surface: #313033;
+    --m3themer-outline: #938F99;
+    --m3themer-outline-variant: #49454F;
+  }
+  
+  .dark-theme() when (@dynamic-colour-theme = Nord) {
+    --m3themer-primary: #88c0d0;
+    --m3themer-on-primary: #2e3440;
+    --m3themer-primary-container: #3b4252;
+    --m3themer-on-primary-container: #b6e0ed;
+    --m3themer-secondary: #81a1c1;
+    --m3themer-on-secondary: #2e3440;
+    --m3themer-secondary-container: #415a77;
+    --m3themer-on-secondary-container: #d8dee9;
+    --m3themer-tertiary: #5e81ac;
+    --m3themer-on-tertiary: #2e3440;
+    --m3themer-tertiary-container: #4c566a;
+    --m3themer-on-tertiary-container: #d8dee9;
+    --m3themer-error: #ffb2b7;
+    --m3themer-on-error: #2e3440;
+    --m3themer-error-container: #3b4252;
+    --m3themer-on-error-container: #ffb2b7;
+    --m3themer-background: #2e3440;
+    --m3themer-on-background: #eceff4;
+    --m3themer-surface-dim: #2e3440;
+    --m3themer-surface: #2e3440;
+    --m3themer-surface-bright: #434c5e;
+    --m3themer-surface-container-lowest: #242933;
+    --m3themer-surface-container-low: #242933;
+    --m3themer-surface-container: #3b4252;
+    --m3themer-surface-container-high: #434c5e;
+    --m3themer-surface-container-highest: #4c566a;
+    --m3themer-on-surface: #eceff4;
+    --m3themer-on-surface-variant: #e5e9f0;
+    --m3themer-inverse-surface: #d8dee9;
+    --m3themer-inverse-on-surface: #2e3440;
+    --m3themer-outline: #899295;
+    --m3themer-outline-variant: #4c566a;
+  }
+  
+  .dark-theme() {
+    --m3themer-warning: #E1C380;
+    --m3themer-on-warning: #3F2E00;
+    --m3themer-warning-container: #58440C;
+    --m3themer-on-warning-container: #FFDF99;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    :root when (@light-dark-auto = Auto) {
+      .dark-theme();
+    }
+  }
+  :root when (@light-dark-auto = Dark) {
+    .dark-theme();
+  }
+  
+  // Overwriting all of the baby blue
+  .vhoiae.KkxPLb {
+    --dt-on-background: var(--m3themer-on-background); // was #1F1F1F
+    --dt-on-background-secondary: #5E5E5E;
+    --dt-background: var(--m3themer-background); // was #FFF
+    --dt-on-surface: var(--m3themer-on-surface); // was #1F1F1F
+    --dt-inverse-surface: var(--m3themer-inverse-surface); // was #303030
+    --dt-on-surface-secondary: var(--m3themer-on-surface-variant); // was #5E5E5E
+    --dt-on-surface-variant: var(--m3themer-on-surface-variant); // was #444746
+    --dt-surface-variant: var(--m3themer-surface-container-highest); // was #E3E3E3
+    --dt-inverse-on-surface: var(--m3themer-inverse-on-surface); // was #F2F2F2
+    --dt-surface: var(--m3themer-surface); // was #FFF
+    --dt-surface-tint: var(--m3themer-surface-tint); // was #6991d6
+    --dt-surface1: var(--m3themer-surface-container-low); // was #f7f9fc. This is to migrate GDrive from the transparency-based surface colour system to the tone-based system. https://material.io/blog/tone-based-surface-color-m3
+    --dt-surface1-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+    --dt-surface2: var(--m3themer-surface-container); // was #f2f6fc
+    --dt-surface2-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+    --dt-surface3: var(--m3themer-surface-container-high); // was #edf2fc
+    --dt-surface3-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+    --dt-surface4: var(--m3themer-surface-container-high); // was #e8effb
+    --dt-surface4-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+    --dt-surface5: var(--m3themer-surface-container-highest); // was #e2ecfb
+    --dt-surface5-shadow: 0px 8px 10px -6px rgba(0,0,0,0.2),0px 16px 24px 2px rgba(0,0,0,0.14),0px 6px 30px 5px rgba(0,0,0,0.12);
+    --dt-scrim: rgba(0,0,0,0.32);
+    --dt-scrim-2x: rgba(0,0,0,0.64);
+    --dt-on-primary-container: var(--m3themer-on-primary-container); // was #041E49
+    --dt-primary-container-icon: var(--m3themer-on-primary-container); // was #041E49
+    --dt-primary-container-link: var(--m3themer-on-primary-container); // was #041E49
+    --dt-primary: var(--m3themer-primary); // was #0B57D0
+    --dt-primary-action: var(--m3themer-primary); // was #0B57D0
+    --dt-primary-action-stateful: var(--m3themer-primary); // was #0B57D0
+    --dt-primary-outline: var(--m3themer-primary); // was #0B57D0
+    --dt-primary-action-state-layer: var(--m3themer-primary); // was #0B57D0
+    --dt-primary-container: var(--m3themer-primary-container); // was #D3E3FD
+    --dt-on-primary: var(--m3themer-on-primary); // was #FFF
+    --dt-primary-icon: var(--m3themer-on-primary); // was #FFF
+    --dt-primary-link: var(--m3themer-on-primary); // was #FFF
+    --dt-on-secondary-container: var(--m3themer-on-secondary-container); // was #001D35
+    --dt-secondary-container-icon: var(--m3themer-on-secondary-container); // was #001D35
+    --dt-secondary-container-link: var(--m3themer-on-secondary-container); // was #001D35
+    --dt-secondary: var(--m3themer-secondary); // was #00639B
+    --dt-secondary-action: var(--m3themer-secondary); // was #00639B
+    --dt-secondary-action-stateful: var(--m3themer-secondary); // was #00639B
+    --dt-secondary-outline: var(--m3themer-secondary); // was #00639B
+    --dt-secondary-action-state-layer: var(--m3themer-secondary); // was #00639B
+    --dt-secondary-container: var(--m3themer-secondary-container); // was #C2E7FF
+    --dt-on-secondary: var(--m3themer-on-secondary); // was #FFF
+    --dt-secondary-icon: var(--m3themer-on-secondary); // was #FFF
+    --dt-secondary-link: var(--m3themer-on-secondary); // was #FFF
+    --dt-on-tertiary-container: var(--m3themer-on-tertiary-container); // was #072711
+    --dt-tertiary-container-icon: var(--m3themer-on-tertiary-container); // was #072711
+    --dt-tertiary-container-link: var(--m3themer-on-tertiary-container); // was #072711
+    --dt-tertiary: var(--m3themer-tertiary); // was #146C2E
+    --dt-tertiary-action: var(--m3themer-tertiary); // was #146C2E
+    --dt-tertiary-action-stateful: var(--m3themer-tertiary); // was #146C2E
+    --dt-tertiary-outline: var(--m3themer-tertiary); // was #146C2E
+    --dt-tertiary-action-state-layer: var(--m3themer-tertiary); // was #146C2E
+    --dt-tertiary-container: var(--m3themer-tertiary-container); // was #C4EED0
+    --dt-on-tertiary: var(--m3themer-on-tertiary); // was #FFF
+    --dt-tertiary-icon: var(--m3themer-on-tertiary); // was #FFF
+    --dt-tertiary-link: var(--m3themer-on-tertiary); // was #FFF
+    --dt-on-neutral-container: var(--m3themer-on-surface); // was #1F1F1F
+    --dt-neutral-container-icon: var(--m3themer-on-surface); // was #1F1F1F
+    --dt-neutral-container-link: var(--m3themer-on-surface); // was #1F1F1F
+    --dt-neutral: var(--m3themer-inverse-surface); // was #474747
+    --dt-neutral-action: var(--m3themer-on-surface); // was #1f1f1f
+    --dt-neutral-action-stateful: var(--m3themer-on-surface); // was #1F1F1F
+    --dt-neutral-outline: var(--m3themer-on-surface); // was #1F1F1F
+    --dt-neutral-action-state-layer: var(--m3themer-on-surface); // was #1F1F1F
+    --dt-neutral-container: var(--m3themer-surface-container-highest); // was #E3E3E3
+    --dt-on-neutral: var(--m3themer-inverse-on-surface); // was #FFF
+    --dt-neutral-icon: var(--m3themer-inverse-on-surface); // was #FFF
+    --dt-neutral-link: var(--m3themer-inverse-on-surface); // was #FFF
+    --dt-on-warning-container: var(--m3themer-on-warning-container); // was #421F00
+    --dt-warning-container-icon: var(--m3themer-on-warning-container); // was #421F00
+    --dt-warning-container-link: var(--m3themer-on-warning-container); // was #421F00
+    --dt-warning: var(--m3themer-warning); // was #F09D00
+    --dt-warning-action: var(--m3themer-on-warning-container); // was #421F00
+    --dt-warning-action-stateful: var(--m3themer-on-warning-container); // was #421F00
+    --dt-warning-outline: var(--m3themer-on-warning-container); // was #421F00
+    --dt-warning-action-state-layer: var(--m3themer-on-warning-container); // was #421F00
+    --dt-warning-container: var(--m3themer-warning-container); // was #FFDF99
+    --dt-on-warning: var(--m3themer-on-warning); // was #1F1F1F
+    --dt-warning-icon: var(--m3themer-on-warning); // was #1F1F1F
+    --dt-warning-link: var(--m3themer-on-warning); // was #1F1F1F
+    --dt-on-error-container: var(--m3themer-on-error-container); // was #410E0B
+    --dt-error-container-icon: var(--m3themer-on-error-container); // was #410E0B
+    --dt-error-container-link: var(--m3themer-on-error-container); // was #410E0B
+    --dt-error: var(--m3themer-error); // was #B3261E
+    --dt-error-action: var(--m3themer-error); // was #B3261E
+    --dt-error-action-stateful: var(--m3themer-error); // was #B3261E
+    --dt-error-outline: var(--m3themer-error); // was #B3261E
+    --dt-error-action-state-layer: var(--m3themer-error); // was #B3261E
+    --dt-error-container: var(--m3themer-error-container); // was #F9DEDC
+    --dt-on-error: var(--m3themer-on-error); // was #FFF
+    --dt-error-icon: var(--m3themer-on-error); // was #FFF
+    --dt-error-link: var(--m3themer-on-error); // was #FFF
+    --dt-disabled: color-mix(in srgb, var(--m3themer-on-surface), transparent calc(100% - 12%)); // was rgba(31,31,31,0.12)
+    --dt-on-disabled: color-mix(in srgb, var(--m3themer-on-surface), transparent calc(100% - 38%)); // was rgba(31,31,31,0.38)
+    --dt-outline: var(--m3themer-outline); // was #747775
+    --dt-outline-variant: var(--m3themer-outline-variant); // was #C7C7C7
+    
+    --gm3-sys-color-primary: var(--m3themer-primary);
+    
+    --mdc-ripple-color: var(--m3themer-primary);
+    --mdc-ripple-hover-opacity: 8%;
+  }
+}
+
+@-moz-document url-prefix("https://drive.google.com/drive/") { 
+  // Fixes
+  
+  #drive_main_page>.YkfxEe /* Background */ {
+    //background-color: var(--m3themer-surface-dim);
+  }
+  
+  .a6hOPb /* Onboarding dialog body text */ {
+    color: var(--dt-on-surface);
+  }
+  
+  a {
+    color: var(--m3themer-primary);
+  }
+  
+  :focus {
+    outline-color: var(--m3themer-tertiary);
+  }
+  
+  .ZHllM, .ALpC8b /* Left sidebar */ {
+    background: none;
+  }
+  
+  .ZHllM button.brbsPe /* + New button */ {
+    background-color: var(--dt-primary-container);
+    color: var(--dt-on-primary-container);
+    fill: $color;
+  }
+  
+  form#aso_search_form_anchor {
+    color: var(--m3themer-on-surface);
+    &[role="search"]:not(:focus-within) when (@dynamic-colour-theme = Nord) {
+      @media (prefers-color-scheme: dark) {
+        background-color: if(@light-dark-auto = Auto, var(--m3themer-surface));
+      }
+      & when (@light-dark-auto = Dark) {
+        background-color: var(--m3themer-surface);
+      }
+    }
+    &:focus-within {
+      background-color: var(--m3themer-surface-container-high);
+    }
+    
+    & input.gb_ye {
+      color: var(--m3themer-on-surface);
+    }
+    & input[disabled] /* Autocomplete */ {
+      color: var(--m3themer-outline) !important;
+    }
+    
+    & .cloudsearch_suggestion_overlay /* Search suggestions */ {
+      background-color: var(--m3themer-surface-container-high);
+
+      & .R83xKc /* File type icon circles */ {
+        background-color: transparent;
+        border-color: var(--m3themer-outline-variant);
+      }
+      & .se1Yye /* Names */, 
+      & .Ke58ze /* File types */ {
+        color: var(--dt-on-surface);
+      }
+      
+      & .cloudsearch_suggestion_query_section, 
+      & .cloudsearch_suggestion_people_section, 
+      & .cloudsearch_suggestion_filter_section, 
+      & .cloudsearch_suggestion_footer_section /* Each row */ {
+        border-top-color: var(--dt-outline-variant);
+      }
+      
+      & .cloudsearch_suggestion_query_section>.KiPiIe /* Search history */ {
+        color: var(--m3themer-on-surface);
+        &>.FThaac when (@light-dark-auto = Dark) /* Icon */ {
+          filter: invert();
+          opacity: 80%;
+        }
+        @media (prefers-color-scheme: dark) {
+          &>.FThaac when (@light-dark-auto = Auto){
+            filter: invert();
+            opacity: 80%;
+          }
+        }
+      }
+    }
+    &>table td.gssb_e /* Search suggestions/results as you type */ {
+      background: none;
+      border-top-color: var(--m3themer-outline-variant);
+      &>table.gssb_m {
+        background: none;
+        color: var(--m3themer-on-surface);
+        
+        & .gssb_i, .ASO_SUGGESTION_HIGHLIGHTED {
+          background-color: color-mix(in srgb, var(--m3themer-on-surface), transparent 92%);
+          
+          &>.ASO_SUGGESTION_CELL {
+            border-left-color: transparent; // Removes blue stripe
+          }
+        }
+        
+        & .asor_e /* Suggestion subtext */, 
+        & .gstq_c /* Email addresses */ {
+          color: var(--m3themer-on-surface-variant);
+        }
+        
+        & tr[role="separator"] .gssb_l /* Separator */ {
+          background-color: var(--m3themer-outline-variant);
+        }
+        
+        & .asor:is(.asor_i5) when (@light-dark-auto = Dark) /* Search history icon */ {
+          filter: invert();
+          opacity: 80%;
+        }
+        @media (prefers-color-scheme: dark) {
+          & .asor:is(.asor_i5) when (@light-dark-auto = Auto) {
+            filter: invert();
+            opacity: 80%;
+          }
+        }
+      }
+    }
+  }
+  
+  .Hb-ja-Na .a-c-d:focus /* Settings button focus ring */ {
+    border-color: var(--m3themer-primary);
+  }
+  
+  .gb_Ba /* Account button */ {
+    background-color: var(--dt-surface3);
+    border-color: transparent;
+    &:hover {
+      background-color: var(--dt-surface5);
+      border-color: transparent;
+    }
+  }
+  
+  .a-w /* Menus */ {
+    background-color: var(--m3themer-surface-container);
+    &.a-w-Mr::after {
+      background-image: linear-gradient(to bottom,rgba(255,255,255,0) 0%,var(--m3themer-surface-container) 50%);
+    }
+  }
+  
+  .B-Nd-ZB7aWe-UvFRu /* Storage meter track (treating this as a linear progress indicator*/ {
+    background-color: var(--m3themer-surface-container-highest);
+  }
+  
+  .a-d-c svg.a-s-fa-Ha-pa.c-qd /* Filter icon */ {
+    fill: currentColor;
+  }
+  
+  .iylrfe.vf9sSe, 
+  .XFWv2d /* Filter chip menus */, 
+  .vhoiae .gVl2db /* People filter chip submenu */ {
+    background-color: var(--m3themer-surface-container);
+  }
+  
+  .iylrfe.vf9sSe .CeSLIf /* Last modified filter chip date picker labels */ {
+    background: linear-gradient(180deg,var(--m3themer-surface-container,#fff) 0,var(--m3themer-surface-container,#fff) 70%,transparent 70%,transparent 100%);
+  }
+  
+  .s55KNe .tohzcb>.l-o-c-qd>svg.a-s-fa-Ha-pa:has(path[d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"], path[d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-5 3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm4 8h-8v-1c0-1.33 2.67-2 4-2s4 .67 4 2v1z"]) /* Gray folders */ {
+    fill: var(--m3themer-outline);
+  }
+  
+  .ab-o-oa:has(.Wa-ka-oa-r.Wa-ka-oa-Zk) /* Empty folder circle */ {
+    background-color: var(--m3themer-surface-container);
+    border-radius: 50%;
+    
+    &>.ab-o-Jb {
+      visibility: hidden;
+    }
+    
+    &:not(:has(.a-i-kd-a-Ab-Zg)) {
+      display: grid;
+      place-items: center;
+
+      .Wa-ka-oa-r {
+        bottom: unset;
+      }
+    }
+  }
+  
+  .ab-o-oa>img[src="https://ssl.gstatic.com/docs/doclist/images/empty_state_empty_folder.png"] /* Empty state images (they all have white backgrounds unfortunately) */, 
+  .ab-S-c-Ka-j>img[src="//ssl.gstatic.com/docs/doclist/images/empty_state_recents_v3.png"] /* This one does have a monochromatic version but the mono version is very clearly a clock and not just a stack of folders but it would be used where a clock doesn’t make sense */ {
+    display: none;
+  }
+  
+  .empty-state-tints() {
+    filter: if(@dynamic-colour-theme = red, hue-rotate(-204deg)) if(@dynamic-colour-theme = yellow, hue-rotate(-156deg)) if(@dynamic-colour-theme = green, hue-rotate(-133deg)) if(@dynamic-colour-theme = blue, hue-rotate(4deg)) if(@dynamic-colour-theme = violet, hue-rotate(47deg)) if(@dynamic-colour-theme = Nord, hue-rotate(-6deg) contrast(85%)) if(@light-dark-auto = Dark, invert(93%) hue-rotate(180deg) brightness(2));
+  }
+  
+  @bad-urls: "//ssl.gstatic.com/docs/doclist/images/empty_state_computers_v3.png", "//ssl.gstatic.com/docs/doclist/images/empty_state_shared_files_v3.png", "//ssl.gstatic.com/docs/doclist/images/empty_state_starred_files_v3.png", "//ssl.gstatic.com/docs/doclist/images/empty_state_trash_v3.png";
+
+  each(@bad-urls, {
+    
+    @good-url: replace(@value, "v3.png", "v2.svg");
+    
+    :is(.ab-S-c-j, .ab-S-c-Ka-j):has(img[src=@{value}]) {
+      text-align: center;
+
+      & img {
+        display: none;
+      }
+      
+      &::after {
+        background-image: url(@good-url);
+        content: "";
+        display: inline-block;
+        .empty-state-tints();
+        height: 171px;
+        width: 171px;
+      }
+      
+      @media (prefers-color-scheme: dark) {
+        & when (@light-dark-auto = Auto) {
+          filter: invert(93%) hue-rotate(180deg) brightness(2);
+        }
+      }
+    }
+    
+    .ab-S-c-j:has(img[src=@{good-url}]) {
+      & img {
+        .empty-state-tints();
+      }
+
+      @media (prefers-color-scheme: dark) {
+        & when (@light-dark-auto = Auto) {
+          filter: invert(93%) hue-rotate(180deg) brightness(2);
+        }
+      }
+    }
+  });
+  
+  .ab-S-c-Ka-j:has(img[src="//ssl.gstatic.com/docs/doclist/images/empty_state_starred_files_v3.png"])::after, 
+  .ab-S-c-j>img[src="//ssl.gstatic.com/docs/doclist/images/empty_state_starred_files_v2.svg"] /* Star fix */ {
+    clip-path: polygon(0% 0%, 100% 0%, 94.53% 38.3%, 67.56% 57.66%, 77.68% 89.48%, 50.58% 69.94%, 24.06% 89.48%, 34.19% 57.66%, 6.4% 37.13%);
+  }
+  
+  .kc-A /* Learn more button in trash */ {
+    color: var(--m3themer-primary);
+  }
+  
+  .wbg7nb .a-ub-V-Ok-va .a-Mg-V-c svg.a-Mg-qd-c.c-qd[fill="#5f6368"] /* Details sidebar titlebar icon */ {
+    fill: var(--m3themer-secondary);
+  }
+  
+  .WbUJNb .VfPpkd-jY41G-ga /* Details sidebar tab text */ {
+    color: var(--m3themer-on-surface-variant);
+  }
+  .WbUJNb:hover .VfPpkd-jY41G-ga /* When hovered */, 
+  .WbUJNb.VfPpkd-ksKsZd-mWPk3d-Qu-Nd-Pb .VfPpkd-jY41G-ga, 
+  .WbUJNb:not(.VfPpkd-ksKsZd-mWPk3d):focus .VfPpkd-jY41G-ga, 
+  .WbUJNb:active .VfPpkd-jY41G-ga {
+    color: var(--m3themer-on-surface);
+  }
+  .WbUJNb.VfPpkd-ra-Qu-Sa .VfPpkd-jY41G-ga /* Selected tab text */,
+  .WbUJNb:hover.VfPpkd-ra-Qu-Sa .VfPpkd-jY41G-ga, 
+  .WbUJNb.VfPpkd-ksKsZd-mWPk3d-Qu-Nd-Pb.VfPpkd-ra-Qu-Sa .VfPpkd-jY41G-ga /* When focused */, 
+  .WbUJNb:not(.VfPpkd-ksKsZd-mWPk3d):focus.VfPpkd-ra-Qu-Sa .VfPpkd-jY41G-ga, 
+  .WbUJNb:active.VfPpkd-ra-Qu-Sa .VfPpkd-jY41G-ga {
+    color: var(--m3themer-primary);
+  }
+  .rvBHac .VfPpkd-ra-wEcVzc-Qu-NowJzb /* Selected tab underline */, 
+  .WbUJNb:hover .VfPpkd-ra-wEcVzc-Qu-NowJzb, 
+  .WbUJNb.VfPpkd-ksKsZd-mWPk3d-Qu-Nd-Pb .VfPpkd-ra-wEcVzc-Qu-NowJzb /* When focused */, 
+  .WbUJNb:not(.VfPpkd-ksKsZd-mWPk3d):focus .VfPpkd-ra-wEcVzc-Qu-NowJzb, 
+  .WbUJNb:active .VfPpkd-ra-wEcVzc-Qu-NowJzb {
+    border-color: var(--m3themer-primary);
+  }
+  
+  .a-q-Xc-Ab-c-wDYxhc /* Details sidebar empty state (in pages besides My Drive) */ {
+    &>img[src="https://ssl.gstatic.com/docs/doclist/images/empty_state_details.png"] {
+      visibility: hidden;
+    }
+  }
+  
+  .gb_Mc /* Settings back button */ {
+    &:hover {
+      background-color: color-mix(in srgb, var(--m3themer-on-surface-variant), transparent calc(100% - 8%));
+    }
+    &:focus:focus-visible, &:focus-visible, &:focus, &:focus:hover {
+      background-color: color-mix(in srgb, var(--m3themer-on-surface-variant), transparent calc(100% - 12%));
+    }
+    &>svg {
+      color: var(--m3themer-on-surface-variant);
+    }
+  }
+  .gb_cd.gb_dd /* Settings title */ {
+    color: var(--m3themer-on-surface);
+  }
+  
+  // Apps sidebar
+  
+  .Yb-Il-d-Pb .Yb-Il-d-c-Nd, 
+  .Yb-Il-d-Pb.Yb-Il-d-W .Yb-Il-d-c-Nd, 
+  .Kk7lMc-Wc-Tn .Yb-Il-d-W .Yb-Il-d-c-Nd /* Hover on apps sidebar icon */, 
+  .Kk7lMc-Wc-Tn .Yb-Il-d-pb .Yb-Il-d-c-Nd, 
+  .Kk7lMc-Wc-Tn .Yb-Il-d-ha.Yb-Il-d-W .Yb-Il-d-c-Nd {
+    background-color: color-mix(in srgb, var(--m3themer-on-surface-variant), transparent calc(100% - 8%));
+  }
+  @media (prefers-color-scheme: dark) {
+    .Yb-Il-d-c-j[style="background-image: url(https://fonts.gstatic.com/s/i/googlematerialicons/add/v21/black-24dp/1x/gm_add_black_24dp.png)"] when (@light-dark-auto = Auto)/* Get new add-ons icon */ {
+      background-image: url(https://fonts.gstatic.com/s/i/googlematerialicons/add/v21/white-24dp/1x/gm_add_white_24dp.png) !important;
+      opacity: 80%;
+    }
+  }
+  .Yb-Il-d-c-j[style="background-image: url(https://fonts.gstatic.com/s/i/googlematerialicons/add/v21/black-24dp/1x/gm_add_black_24dp.png)"] when (@light-dark-auto = Dark) {
+    background-image: url(https://fonts.gstatic.com/s/i/googlematerialicons/add/v21/white-24dp/1x/gm_add_white_24dp.png) !important;
+    opacity: 80%;
+  }
+  .Kk7lMc-Wc-Tn.Kk7lMc-Yb-Il-j, 
+  .Kk7lMc-Wc-Tn .Kk7lMc-Yb-Il-vc /* Apps sidebar divider */, 
+  .Kk7lMc-Wc-Tn .Kk7lMc-Yb-Il-zc-eo-j::before {
+    border-color: var(--m3themer-outline-variant);
+  }
+  .Yb-Il-d-c-j[style="background-image: url(//www.gstatic.com/images/icons/material/system/2x/more_horiz_grey600_24dp.png)"] when (@light-dark-auto = Dark) /* More apps icon */ {
+    background-image: url(https://www.gstatic.com/images/icons/material/system/2x/more_horiz_white_24dp.png) !important;
+    opacity: 80%;
+  }
+  @media (prefers-color-scheme: dark) {
+    & .Yb-Il-d-c-j[style="background-image: url(//www.gstatic.com/images/icons/material/system/2x/more_horiz_grey600_24dp.png)"] when (@light-dark-auto = Auto) {
+      background-image: url(https://www.gstatic.com/images/icons/material/system/2x/more_horiz_white_24dp.png) !important;
+      opacity: 80%;
+    }
+  }
+  .Kk7lMc-Wc-Tn .Yb-Il-d-Pb .Yb-Il-d-c-Nd /* Apps sidebar collapse button, but focus */ {
+    background-color: color-mix(in srgb, var(--m3themer-on-surface-variant), transparent calc(100% - 12%));
+  }
+  .Yb-Il-d-c /* Apps sidebar collapse icon */ {
+    fill: var(--m3themer-on-surface-variant);
+  }
+  .Kk7lMc-QWPxkf-d.Yb-Il-d-rc .Yb-Il-d-c-Nd, .Kk7lMc-Wc-Tn .Kk7lMc-QWPxkf-d.Yb-Il-d-rc .Yb-Il-d-c-Nd /* Apps sidebar reveal button area */ {
+    background-color: var(--m3themer-surface-container-highest);
+  }
+  .Kk7lMc-QWPxkf-d.Yb-Il-d-rc.Yb-Il-d-W .Yb-Il-d-c-Nd, .Kk7lMc-Wc-Tn .Kk7lMc-QWPxkf-d.Yb-Il-d-rc.Yb-Il-d-W .Yb-Il-d-c-Nd /* That, but hover */ {
+    background-color: color-mix(in srgb, var(--m3themer-surface-container-highest), var(--m3themer-on-surface-variant) 8%);
+  }
+  .Kk7lMc-QWPxkf-d.Yb-Il-d-rc.Yb-Il-d-Pb .Yb-Il-d-c-Nd, .Kk7lMc-Wc-Tn .Kk7lMc-QWPxkf-d.Yb-Il-d-rc.Yb-Il-d-Pb .Yb-Il-d-c-Nd /* That, but focus */ {
+    background-color: color-mix(in srgb, var(--m3themer-surface-container-highest), var(--m3themer-on-surface-variant) 12%);
+  }
+}
+
+@-moz-document regexp("https:\\/\\/drive\\.google\\.com.*\\/odp\\/embed\\?host_context=CAgSGCICIAEqAggBMgoIARABGAEgASgBOAFIARohZHJpdmUud2ViLWZyb250ZW5kXzIwMjMwNTIxLjE5X3AwIgE.*&origin=https%3A%2F%2Fdrive.google.com&odbc=1&online=1") {
+  // Details sidebar fixes
+  img.nlcIyd[src="https://ssl.gstatic.com/docs/doclist/images/empty_state_details.png"] {
+    // Deletes the empty state image (it had a white, not clear background and didn’t really fit in to M3 unfortunately)
+    display: none;
+    
+    &+span.JG6Ll {
+      // Vertically centers the empty state text.
+      line-height: 100cqh;
+    }
+  }
+}
